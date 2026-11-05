@@ -1,0 +1,39 @@
+# Runs the api and worker against the real Stripe and PayPal sandboxes
+# instead of the local stand-in. Credentials come from .env. Start with
+# `make live`.
+
+x-live-env: &live-env
+  STRIPE_API_BASE: https://api.stripe.com
+  STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:?set STRIPE_SECRET_KEY in .env}
+  STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET:?set STRIPE_WEBHOOK_SECRET in .env}
+  PAYPAL_API_BASE: https://api-m.sandbox.paypal.com
+  PAYPAL_CLIENT_ID: ${PAYPAL_CLIENT_ID:-}
+  PAYPAL_CLIENT_SECRET: ${PAYPAL_CLIENT_SECRET:-}
+  PAYPAL_WEBHOOK_ID: ${PAYPAL_WEBHOOK_ID:-}
+  PAYPAL_PLAN_ID: ${PAYPAL_PLAN_ID:-}
+
+services:
+  # Not needed against the real providers.
+  sandbox:
+    profiles: [local]
+
+  api:
+    depends_on: !override
+      db: { condition: service_healthy }
+    environment: *live-env
+
+  worker:
+    depends_on: !override
+      db: { condition: service_healthy }
+    environment: *live-env
+
+  # Forwards Stripe test-mode events to the api, so no public URL is needed.
+  stripe-cli:
+    image: stripe/stripe-cli:v1.54.0
+    depends_on: [api]
+    command:
+      - listen
+      - --forward-to=http://api:8080/v1/webhooks/stripe
+      - --events=checkout.session.completed,checkout.session.async_payment_succeeded,checkout.session.async_payment_failed,checkout.session.expired,refund.created,refund.updated,refund.failed,charge.refund.updated
+    environment:
+      STRIPE_API_KEY: ${STRIPE_SECRET_KEY:?set STRIPE_SECRET_KEY in .env}

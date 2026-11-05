@@ -1,0 +1,63 @@
+name: paygate
+
+x-image: &image
+  image: paygate:local
+  build: .
+
+# Shared by the api and the worker. The providers point at the local
+# stand-in; docker-compose.live.yml points them at the real sandboxes.
+x-app-env: &app-env
+  DATABASE_URL: postgres://paygate:paygate@db:5432/paygate?sslmode=disable
+  WORKER_FIRST_CHECK: 1m
+  STRIPE_API_BASE: http://sandbox:8090
+  STRIPE_SECRET_KEY: sk_test_local_sandbox
+  STRIPE_WEBHOOK_SECRET: whsec_local_sandbox
+  PAYPAL_API_BASE: http://sandbox:8090
+  PAYPAL_CLIENT_ID: local-sandbox-client
+  PAYPAL_CLIENT_SECRET: local-sandbox-secret
+  PAYPAL_WEBHOOK_ID: WH-LOCAL-SANDBOX
+  PAYPAL_PLAN_ID: P-LOCALSANDBOXPLAN
+
+x-app-deps: &app-deps
+  db: { condition: service_healthy }
+  sandbox: { condition: service_started }
+
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: paygate
+      POSTGRES_PASSWORD: paygate
+      POSTGRES_DB: paygate
+    ports: ["55432:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U paygate -d paygate"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  # Local stand-in for the Stripe and PayPal sandbox APIs.
+  sandbox:
+    <<: *image
+    entrypoint: ["/usr/local/bin/sandbox"]
+    environment:
+      PUBLIC_URL: http://sandbox:8090
+      STRIPE_WEBHOOK_URL: http://api:8080/v1/webhooks/stripe
+      STRIPE_WEBHOOK_SECRET: whsec_local_sandbox
+      PAYPAL_WEBHOOK_URL: http://api:8080/v1/webhooks/paypal
+      PAYPAL_WEBHOOK_ID: WH-LOCAL-SANDBOX
+      PAYPAL_PLAN_ID: P-LOCALSANDBOXPLAN
+    ports: ["8090:8090"]
+
+  api:
+    <<: *image
+    depends_on: *app-deps
+    environment: *app-env
+    ports: ["8080:8080"]
+
+  # Retries unanswered provider calls and reconciles with the providers.
+  worker:
+    <<: *image
+    entrypoint: ["/usr/local/bin/worker"]
+    depends_on: *app-deps
+    environment: *app-env
