@@ -1,0 +1,14 @@
+{
+  "id": "WH-77687562XN25889J8-8Y6T55435R66168T6",
+  "event_version": "1.0",
+  "create_time": "2026-11-06T10:30:01.000Z",
+  "resource_type": "subscription",
+  "event_type": "BILLING.SUBSCRIPTION.ACTIVATED",
+  "summary": "Subscription activated",
+  "resource": {
+    "id": "I-BW452GLLEP1G",
+    "status": "ACTIVE",
+    "plan_id": "P-5ML4271244454362WXNWU5NQ",
+    "custom_id": "pay_6a5b4c3d2e1f0a9b8c7d6e5f"
+  }
+}

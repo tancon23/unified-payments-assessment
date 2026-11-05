@@ -1,0 +1,17 @@
+{
+  "id": "WH-58D329510W468432D-8HN650336L201105X",
+  "event_version": "1.0",
+  "create_time": "2026-11-06T10:15:09.000Z",
+  "resource_type": "capture",
+  "event_type": "PAYMENT.CAPTURE.COMPLETED",
+  "summary": "Payment completed for $ 25.00 USD",
+  "resource": {
+    "id": "3C679366HH908993F",
+    "status": "COMPLETED",
+    "amount": { "currency_code": "USD", "value": "25.00" },
+    "custom_id": "pay_3f2a9c1e7b6d4a8e9f0c1b2a",
+    "final_capture": true,
+    "supplementary_data": { "related_ids": { "order_id": "5O190127TN364715T" } },
+    "create_time": "2026-11-06T10:15:08Z"
+  }
+}

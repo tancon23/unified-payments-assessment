@@ -1,0 +1,14 @@
+{
+  "id": "WH-1GE84257G0350133W-6RW800890C634293G",
+  "event_version": "1.0",
+  "create_time": "2026-11-06T10:20:12.000Z",
+  "resource_type": "refund",
+  "event_type": "PAYMENT.CAPTURE.REFUNDED",
+  "summary": "A $ 10.00 USD capture payment was refunded",
+  "resource": {
+    "id": "1JU08902781691411",
+    "status": "COMPLETED",
+    "amount": { "currency_code": "USD", "value": "10.00" },
+    "custom_id": "re_5c4b3a2f1e0d9c8b7a6f5e4d"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "WH-7Y7254563A4550640-11V2185806837105M",
+  "event_version": "1.0",
+  "create_time": "2026-11-06T10:15:03.000Z",
+  "resource_type": "checkout-order",
+  "event_type": "CHECKOUT.ORDER.APPROVED",
+  "summary": "An order has been approved by buyer",
+  "resource": {
+    "id": "5O190127TN364715T",
+    "status": "APPROVED",
+    "intent": "CAPTURE",
+    "purchase_units": [
+      {
+        "reference_id": "default",
+        "custom_id": "pay_3f2a9c1e7b6d4a8e9f0c1b2a",
+        "description": "Order 1001",
+        "amount": { "currency_code": "USD", "value": "25.00" }
+      }
+    ],
+    "create_time": "2026-11-06T10:14:20Z"
+  }
+}

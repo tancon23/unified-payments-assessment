@@ -1,0 +1,15 @@
+{
+  "id": "WH-4SW78779LY2325805-07E03580SX1414828",
+  "event_version": "1.0",
+  "create_time": "2026-11-06T10:16:44.000Z",
+  "resource_type": "capture",
+  "event_type": "PAYMENT.CAPTURE.DENIED",
+  "summary": "A $ 25.00 USD capture payment was denied",
+  "resource": {
+    "id": "7NW873794T343360M",
+    "status": "DECLINED",
+    "amount": { "currency_code": "USD", "value": "25.00" },
+    "custom_id": "pay_8e7d6c5b4a3f2e1d0c9b8a7f",
+    "supplementary_data": { "related_ids": { "order_id": "8MC585209K746392H" } }
+  }
+}
