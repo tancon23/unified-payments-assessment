@@ -1,0 +1,501 @@
+{
+  "info": {
+    "name": "paygate",
+    "description": "Requests for the paygate API and the local provider sandbox. Set apiKey to a key printed by `make seed`. Create requests save paymentId and checkoutRef for the requests after them.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "sandboxUrl",
+      "value": "http://localhost:8090"
+    },
+    {
+      "key": "apiKey",
+      "value": ""
+    },
+    {
+      "key": "paymentId",
+      "value": ""
+    },
+    {
+      "key": "checkoutRef",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "Open a Stripe checkout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Idempotency-Key",
+                "value": "{{$guid}}"
+              }
+            ],
+            "url": "{{baseUrl}}/v1/checkouts",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"provider\": \"stripe\",\n  \"mode\": \"payment\",\n  \"amount_minor\": 2500,\n  \"currency\": \"usd\",\n  \"description\": \"Order 1001\",\n  \"success_url\": \"https://shop.example/thanks\",\n  \"cancel_url\": \"https://shop.example/cart\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const body = pm.response.json();",
+                  "if (body.id) pm.collectionVariables.set('paymentId', body.id);",
+                  "if (body.provider_checkout_id) pm.collectionVariables.set('checkoutRef', body.provider_checkout_id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Open a PayPal checkout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Idempotency-Key",
+                "value": "{{$guid}}"
+              }
+            ],
+            "url": "{{baseUrl}}/v1/checkouts",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"provider\": \"paypal\",\n  \"mode\": \"payment\",\n  \"amount_minor\": 2500,\n  \"currency\": \"usd\",\n  \"description\": \"Order 1001\",\n  \"success_url\": \"https://shop.example/thanks\",\n  \"cancel_url\": \"https://shop.example/cart\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const body = pm.response.json();",
+                  "if (body.id) pm.collectionVariables.set('paymentId', body.id);",
+                  "if (body.provider_checkout_id) pm.collectionVariables.set('checkoutRef', body.provider_checkout_id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Open a Stripe subscription",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Idempotency-Key",
+                "value": "{{$guid}}"
+              }
+            ],
+            "url": "{{baseUrl}}/v1/checkouts",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"provider\": \"stripe\",\n  \"mode\": \"subscription\",\n  \"amount_minor\": 2500,\n  \"currency\": \"usd\",\n  \"interval\": \"month\",\n  \"description\": \"Order 1001\",\n  \"success_url\": \"https://shop.example/thanks\",\n  \"cancel_url\": \"https://shop.example/cart\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const body = pm.response.json();",
+                  "if (body.id) pm.collectionVariables.set('paymentId', body.id);",
+                  "if (body.provider_checkout_id) pm.collectionVariables.set('checkoutRef', body.provider_checkout_id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Open a PayPal subscription",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Idempotency-Key",
+                "value": "{{$guid}}"
+              }
+            ],
+            "url": "{{baseUrl}}/v1/checkouts",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"provider\": \"paypal\",\n  \"mode\": \"subscription\",\n  \"amount_minor\": 2500,\n  \"currency\": \"usd\",\n  \"interval\": \"month\",\n  \"description\": \"Order 1001\",\n  \"success_url\": \"https://shop.example/thanks\",\n  \"cancel_url\": \"https://shop.example/cart\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Must match the PayPal plan: the local sandbox's plan charges 2500 usd every month."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const body = pm.response.json();",
+                  "if (body.id) pm.collectionVariables.set('paymentId', body.id);",
+                  "if (body.provider_checkout_id) pm.collectionVariables.set('checkoutRef', body.provider_checkout_id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Get the payment",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              }
+            ],
+            "url": "{{baseUrl}}/v1/payments/{{paymentId}}"
+          }
+        },
+        {
+          "name": "Refund part of the payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Idempotency-Key",
+                "value": "{{$guid}}"
+              }
+            ],
+            "url": "{{baseUrl}}/v1/payments/{{paymentId}}/refunds",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount_minor\": 1000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Refund the rest",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-API-Key",
+                "value": "{{apiKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Idempotency-Key",
+                "value": "{{$guid}}"
+              }
+            ],
+            "url": "{{baseUrl}}/v1/payments/{{paymentId}}/refunds",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sandbox",
+      "description": "Controls of the local provider stand-in.",
+      "item": [
+        {
+          "name": "Customer pays (webhook delivered twice)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{sandboxUrl}}/sandbox/checkouts/{{checkoutRef}}/pay?deliveries=2"
+          }
+        },
+        {
+          "name": "Payment fails",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{sandboxUrl}}/sandbox/checkouts/{{checkoutRef}}/fail"
+          }
+        },
+        {
+          "name": "Checkout expires",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{sandboxUrl}}/sandbox/checkouts/{{checkoutRef}}/expire"
+          }
+        },
+        {
+          "name": "Next Stripe call answers 503",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{sandboxUrl}}/sandbox/faults",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"provider\": \"stripe\",\n  \"kind\": \"unavailable\",\n  \"count\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Next Stripe call times out after acting",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{sandboxUrl}}/sandbox/faults",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"provider\": \"stripe\",\n  \"kind\": \"timeout\",\n  \"count\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "description": "The sample payloads in docs/webhooks. Sent without a valid signature, so the API answers 400; real deliveries come from the sandbox, the Stripe CLI or PayPal.",
+      "item": [
+        {
+          "name": "Stripe checkout.session.completed (unsigned)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Stripe-Signature",
+                "value": "t=0,v1=unsigned"
+              }
+            ],
+            "url": "{{baseUrl}}/v1/webhooks/stripe",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"evt_1QXk2bL8u5zR0aS3mN4oP7qR\",\n  \"object\": \"event\",\n  \"api_version\": \"2024-06-20\",\n  \"created\": 1762416000,\n  \"type\": \"checkout.session.completed\",\n  \"livemode\": false,\n  \"data\": {\n    \"object\": {\n      \"id\": \"cs_test_a1B2c3D4e5F6g7H8i9J0kLmNoPqRsTuVwXyZ\",\n      \"object\": \"checkout.session\",\n      \"mode\": \"payment\",\n      \"status\": \"complete\",\n      \"payment_status\": \"paid\",\n      \"amount_total\": 2500,\n      \"currency\": \"usd\",\n      \"client_reference_id\": \"pay_3f2a9c1e7b6d4a8e9f0c1b2a\",\n      \"metadata\": { \"payment_id\": \"pay_3f2a9c1e7b6d4a8e9f0c1b2a\" },\n      \"payment_intent\": \"pi_3QXk2aL8u5zR0aS31bC2dE3f\",\n      \"subscription\": null,\n      \"url\": null\n    }\n  }\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Stripe refund.updated (unsigned)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Stripe-Signature",
+                "value": "t=0,v1=unsigned"
+              }
+            ],
+            "url": "{{baseUrl}}/v1/webhooks/stripe",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"evt_1QXn9fL8u5zR0aS3vW2xY4zA\",\n  \"object\": \"event\",\n  \"api_version\": \"2024-06-20\",\n  \"created\": 1762420000,\n  \"type\": \"refund.updated\",\n  \"livemode\": false,\n  \"data\": {\n    \"object\": {\n      \"id\": \"re_3QXk2aL8u5zR0aS30aB1cD2e\",\n      \"object\": \"refund\",\n      \"amount\": 1000,\n      \"currency\": \"usd\",\n      \"payment_intent\": \"pi_3QXk2aL8u5zR0aS31bC2dE3f\",\n      \"status\": \"succeeded\",\n      \"metadata\": { \"refund_id\": \"re_5c4b3a2f1e0d9c8b7a6f5e4d\" }\n    }\n  }\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "PayPal CHECKOUT.ORDER.APPROVED (unsigned)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/v1/webhooks/paypal",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"WH-7Y7254563A4550640-11V2185806837105M\",\n  \"event_version\": \"1.0\",\n  \"create_time\": \"2026-11-06T10:15:03.000Z\",\n  \"resource_type\": \"checkout-order\",\n  \"event_type\": \"CHECKOUT.ORDER.APPROVED\",\n  \"summary\": \"An order has been approved by buyer\",\n  \"resource\": {\n    \"id\": \"5O190127TN364715T\",\n    \"status\": \"APPROVED\",\n    \"intent\": \"CAPTURE\",\n    \"purchase_units\": [\n      {\n        \"reference_id\": \"default\",\n        \"custom_id\": \"pay_3f2a9c1e7b6d4a8e9f0c1b2a\",\n        \"description\": \"Order 1001\",\n        \"amount\": { \"currency_code\": \"USD\", \"value\": \"25.00\" }\n      }\n    ],\n    \"create_time\": \"2026-11-06T10:14:20Z\"\n  }\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "PayPal PAYMENT.CAPTURE.COMPLETED (unsigned)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/v1/webhooks/paypal",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"WH-58D329510W468432D-8HN650336L201105X\",\n  \"event_version\": \"1.0\",\n  \"create_time\": \"2026-11-06T10:15:09.000Z\",\n  \"resource_type\": \"capture\",\n  \"event_type\": \"PAYMENT.CAPTURE.COMPLETED\",\n  \"summary\": \"Payment completed for $ 25.00 USD\",\n  \"resource\": {\n    \"id\": \"3C679366HH908993F\",\n    \"status\": \"COMPLETED\",\n    \"amount\": { \"currency_code\": \"USD\", \"value\": \"25.00\" },\n    \"custom_id\": \"pay_3f2a9c1e7b6d4a8e9f0c1b2a\",\n    \"final_capture\": true,\n    \"supplementary_data\": { \"related_ids\": { \"order_id\": \"5O190127TN364715T\" } },\n    \"create_time\": \"2026-11-06T10:15:08Z\"\n  }\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "PayPal BILLING.SUBSCRIPTION.ACTIVATED (unsigned)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/v1/webhooks/paypal",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"WH-77687562XN25889J8-8Y6T55435R66168T6\",\n  \"event_version\": \"1.0\",\n  \"create_time\": \"2026-11-06T10:30:01.000Z\",\n  \"resource_type\": \"subscription\",\n  \"event_type\": \"BILLING.SUBSCRIPTION.ACTIVATED\",\n  \"summary\": \"Subscription activated\",\n  \"resource\": {\n    \"id\": \"I-BW452GLLEP1G\",\n    \"status\": \"ACTIVE\",\n    \"plan_id\": \"P-5ML4271244454362WXNWU5NQ\",\n    \"custom_id\": \"pay_6a5b4c3d2e1f0a9b8c7d6e5f\"\n  }\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Operations",
+      "item": [
+        {
+          "name": "Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/healthz"
+          }
+        },
+        {
+          "name": "Metrics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/metrics"
+          }
+        }
+      ]
+    }
+  ]
+}
