@@ -20,9 +20,9 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/collectors"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/app"
-	"github.com/tanweerdev/unified-payments-assessment/internal/httpapi"
-	"github.com/tanweerdev/unified-payments-assessment/internal/postgres"
+	"github.com/tancon23/unified-payments-assessment/internal/app"
+	"github.com/tancon23/unified-payments-assessment/internal/httpapi"
+	"github.com/tancon23/unified-payments-assessment/internal/postgres"
 )
 
 func main() {

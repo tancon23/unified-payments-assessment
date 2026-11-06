@@ -8,7 +8,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/payment"
+	"github.com/tancon23/unified-payments-assessment/internal/payment"
 )
 
 func (h *handler) webhook(c *gin.Context) {

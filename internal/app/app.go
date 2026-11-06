@@ -14,10 +14,10 @@ import (
 
 	"github.com/jackc/pgx/v5/pgxpool"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/gateway"
-	"github.com/tanweerdev/unified-payments-assessment/internal/payment"
-	"github.com/tanweerdev/unified-payments-assessment/internal/provider/paypal"
-	"github.com/tanweerdev/unified-payments-assessment/internal/provider/stripe"
+	"github.com/tancon23/unified-payments-assessment/internal/gateway"
+	"github.com/tancon23/unified-payments-assessment/internal/payment"
+	"github.com/tancon23/unified-payments-assessment/internal/provider/paypal"
+	"github.com/tancon23/unified-payments-assessment/internal/provider/stripe"
 )
 
 // Config is read from environment variables.

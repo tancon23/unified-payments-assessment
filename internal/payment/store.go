@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/gateway"
+	"github.com/tancon23/unified-payments-assessment/internal/gateway"
 )
 
 // Store persists payments, refunds and processed webhook events.

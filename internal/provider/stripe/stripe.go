@@ -11,8 +11,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/gateway"
-	"github.com/tanweerdev/unified-payments-assessment/internal/provider/providerhttp"
+	"github.com/tancon23/unified-payments-assessment/internal/gateway"
+	"github.com/tancon23/unified-payments-assessment/internal/provider/providerhttp"
 )
 
 // Name identifies Stripe in API requests, webhook URLs and errors.

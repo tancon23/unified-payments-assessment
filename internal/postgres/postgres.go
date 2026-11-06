@@ -15,7 +15,7 @@ import (
 	"github.com/pressly/goose/v3"
 	"github.com/pressly/goose/v3/lock"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/payment"
+	"github.com/tancon23/unified-payments-assessment/internal/payment"
 )
 
 //go:embed migrations/*.sql

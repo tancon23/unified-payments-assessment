@@ -3,7 +3,7 @@ package payment_test
 import (
 	"testing"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/payment"
+	"github.com/tancon23/unified-payments-assessment/internal/payment"
 )
 
 func TestStatusTransitions(t *testing.T) {

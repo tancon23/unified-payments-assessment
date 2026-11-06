@@ -3,8 +3,8 @@ package paddle_test
 import (
 	"testing"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/provider/paddle"
-	"github.com/tanweerdev/unified-payments-assessment/internal/provider/providertest"
+	"github.com/tancon23/unified-payments-assessment/internal/provider/paddle"
+	"github.com/tancon23/unified-payments-assessment/internal/provider/providertest"
 )
 
 func TestContract(t *testing.T) {

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/provider/stripe"
+	"github.com/tancon23/unified-payments-assessment/internal/provider/stripe"
 )
 
 type stripeSession struct {

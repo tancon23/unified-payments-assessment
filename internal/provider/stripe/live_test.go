@@ -11,9 +11,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/gateway"
-	"github.com/tanweerdev/unified-payments-assessment/internal/provider/providertest"
-	"github.com/tanweerdev/unified-payments-assessment/internal/provider/stripe"
+	"github.com/tancon23/unified-payments-assessment/internal/gateway"
+	"github.com/tancon23/unified-payments-assessment/internal/provider/providertest"
+	"github.com/tancon23/unified-payments-assessment/internal/provider/stripe"
 )
 
 // The Live tests call Stripe's test mode with STRIPE_SECRET_KEY. They are

@@ -11,7 +11,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/gateway"
+	"github.com/tancon23/unified-payments-assessment/internal/gateway"
 )
 
 const maxResponseBytes = 1 << 20

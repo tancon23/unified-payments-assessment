@@ -9,7 +9,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/sandbox"
+	"github.com/tancon23/unified-payments-assessment/internal/sandbox"
 )
 
 func main() {

@@ -12,7 +12,7 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/gateway"
+	"github.com/tancon23/unified-payments-assessment/internal/gateway"
 )
 
 // Delivery is a webhook as a provider sent it.

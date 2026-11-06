@@ -11,7 +11,7 @@ import (
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/postgres"
+	"github.com/tancon23/unified-payments-assessment/internal/postgres"
 )
 
 // New returns a Store on a fresh, migrated schema. See Open.

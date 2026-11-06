@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/gateway"
+	"github.com/tancon23/unified-payments-assessment/internal/gateway"
 )
 
 // Outcome says what applying a piece of provider news did.

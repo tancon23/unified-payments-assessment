@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/money"
-	"github.com/tanweerdev/unified-payments-assessment/internal/provider/paypal"
+	"github.com/tancon23/unified-payments-assessment/internal/money"
+	"github.com/tancon23/unified-payments-assessment/internal/provider/paypal"
 )
 
 type ppAmount struct {

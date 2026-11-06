@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/sandbox"
+	"github.com/tancon23/unified-payments-assessment/internal/sandbox"
 )
 
 // Sandbox runs the local provider stand-in for a test and collects the

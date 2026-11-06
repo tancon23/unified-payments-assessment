@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/gateway"
+	"github.com/tancon23/unified-payments-assessment/internal/gateway"
 )
 
 func TestDocumentedSamplesParse(t *testing.T) {

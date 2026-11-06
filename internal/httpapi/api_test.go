@@ -15,13 +15,13 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/gateway"
-	"github.com/tanweerdev/unified-payments-assessment/internal/httpapi"
-	"github.com/tanweerdev/unified-payments-assessment/internal/payment"
-	"github.com/tanweerdev/unified-payments-assessment/internal/postgres/pgtest"
-	"github.com/tanweerdev/unified-payments-assessment/internal/provider/paypal"
-	"github.com/tanweerdev/unified-payments-assessment/internal/provider/stripe"
-	"github.com/tanweerdev/unified-payments-assessment/internal/sandbox"
+	"github.com/tancon23/unified-payments-assessment/internal/gateway"
+	"github.com/tancon23/unified-payments-assessment/internal/httpapi"
+	"github.com/tancon23/unified-payments-assessment/internal/payment"
+	"github.com/tancon23/unified-payments-assessment/internal/postgres/pgtest"
+	"github.com/tancon23/unified-payments-assessment/internal/provider/paypal"
+	"github.com/tancon23/unified-payments-assessment/internal/provider/stripe"
+	"github.com/tancon23/unified-payments-assessment/internal/sandbox"
 )
 
 const (

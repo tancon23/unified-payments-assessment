@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/gateway"
+	"github.com/tancon23/unified-payments-assessment/internal/gateway"
 )
 
 // fault is an error a fakeProvider returns once. With afterActing set, the

@@ -8,7 +8,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/gateway"
+	"github.com/tancon23/unified-payments-assessment/internal/gateway"
 )
 
 // CheckoutRequest asks for a hosted checkout with one provider.

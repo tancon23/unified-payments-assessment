@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/gateway"
+	"github.com/tancon23/unified-payments-assessment/internal/gateway"
 )
 
 // signatureTolerance bounds how old a signed delivery may be, which stops a

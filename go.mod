@@ -1,4 +1,4 @@
-module github.com/tanweerdev/unified-payments-assessment
+module github.com/tancon23/unified-payments-assessment
 
 go 1.26.1
 

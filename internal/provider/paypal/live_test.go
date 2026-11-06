@@ -8,9 +8,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/gateway"
-	"github.com/tanweerdev/unified-payments-assessment/internal/provider/paypal"
-	"github.com/tanweerdev/unified-payments-assessment/internal/provider/providertest"
+	"github.com/tancon23/unified-payments-assessment/internal/gateway"
+	"github.com/tancon23/unified-payments-assessment/internal/provider/paypal"
+	"github.com/tancon23/unified-payments-assessment/internal/provider/providertest"
 )
 
 // The Live tests call the PayPal sandbox with PAYPAL_CLIENT_ID and

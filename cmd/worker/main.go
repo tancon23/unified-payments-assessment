@@ -10,8 +10,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/app"
-	"github.com/tanweerdev/unified-payments-assessment/internal/postgres"
+	"github.com/tancon23/unified-payments-assessment/internal/app"
+	"github.com/tancon23/unified-payments-assessment/internal/postgres"
 )
 
 func main() {

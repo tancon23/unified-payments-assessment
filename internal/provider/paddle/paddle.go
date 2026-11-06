@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/gateway"
+	"github.com/tancon23/unified-payments-assessment/internal/gateway"
 )
 
 // Name identifies Paddle in API requests, webhook URLs and errors.

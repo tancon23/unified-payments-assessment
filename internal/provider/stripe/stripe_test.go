@@ -8,10 +8,10 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/gateway"
-	"github.com/tanweerdev/unified-payments-assessment/internal/provider/providertest"
-	"github.com/tanweerdev/unified-payments-assessment/internal/provider/stripe"
-	"github.com/tanweerdev/unified-payments-assessment/internal/sandbox"
+	"github.com/tancon23/unified-payments-assessment/internal/gateway"
+	"github.com/tancon23/unified-payments-assessment/internal/provider/providertest"
+	"github.com/tancon23/unified-payments-assessment/internal/provider/stripe"
+	"github.com/tancon23/unified-payments-assessment/internal/sandbox"
 )
 
 func TestContract(t *testing.T) {

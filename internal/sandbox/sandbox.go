@@ -30,8 +30,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/provider/paypal"
-	"github.com/tanweerdev/unified-payments-assessment/internal/provider/stripe"
+	"github.com/tancon23/unified-payments-assessment/internal/provider/paypal"
+	"github.com/tancon23/unified-payments-assessment/internal/provider/stripe"
 )
 
 type Config struct {

@@ -11,7 +11,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/payment"
+	"github.com/tancon23/unified-payments-assessment/internal/payment"
 )
 
 // TenantAuthenticator resolves an API key to the tenant that owns it.

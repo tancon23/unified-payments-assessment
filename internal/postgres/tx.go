@@ -10,8 +10,8 @@ import (
 
 	"github.com/jackc/pgx/v5"
 
-	"github.com/tanweerdev/unified-payments-assessment/internal/gateway"
-	"github.com/tanweerdev/unified-payments-assessment/internal/payment"
+	"github.com/tancon23/unified-payments-assessment/internal/gateway"
+	"github.com/tancon23/unified-payments-assessment/internal/payment"
 )
 
 type txStore struct {
